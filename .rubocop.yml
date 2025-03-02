@@ -8,3 +8,51 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+# Load additional cops for Rails
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+# Global rules
+AllCops:
+  NewCops: enable # Enable new cops automatically
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+
+# Style rules
+Style/StringLiterals:
+  EnforcedStyle: double_quotes # Prefer double quotes
+Style/FrozenStringLiteralComment:
+  Enabled: false # Avoid requiring frozen string literal comments
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true # Enforce trailing commas in multiline arrays
+Style/TrailingCommaInHashLiteral:
+  Enabled: true # Enforce trailing commas in multiline hashes
+
+# Layout rules
+Layout/LineLength:
+  Max: 100 # Maximum characters per line
+Layout/IndentationWidth:
+  Width: 2 # Use 2 spaces for indentation
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true # Ensure empty lines around block bodies
+
+# Rails-specific rules
+Rails:
+  Enabled: true
+
+Rails/HasAndBelongsToMany:
+  Enabled: false # Allow HABTM relationships if necessary
+
+Rails/SaveBang:
+  Enabled: true # Enforce use of `save!` instead of `save`
+
+Rails/NotNullColumn:
+  Enabled: true # Ensure NOT NULL constraints are enforced in migrations
+
+Rails/TimeZone:
+  Enabled: true # Ensure Time.zone is used instead
