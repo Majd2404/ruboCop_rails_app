@@ -68,9 +68,9 @@ AllCops:
 
 To disable specific cops for a section of code:
 
-# rubocop:disable Style/StringLiterals
+### rubocop:disable Style/StringLiterals
 puts "Hello, World!"
-# rubocop:enable Style/StringLiterals
+### rubocop:enable Style/StringLiterals
 
 ## Step 6: Running RuboCop in CI/CD
 
